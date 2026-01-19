@@ -48,7 +48,7 @@ class AuthController extends Controller
             // Authentification via le service
             $result = $this->UserService->connexion($request);
 
-            if ($result['status']) {
+            if (!empty($result['status']) && $result['status'] === true) {
 
                 $authUser = $result['data'];
 
