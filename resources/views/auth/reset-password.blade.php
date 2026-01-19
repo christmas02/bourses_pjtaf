@@ -19,7 +19,17 @@
               <h4>Mise à jour de votre mot de passe</h4>
               <p>Entrez un nouveau mot de passe.</p>
               <p>Pour tout besoin d’assistance contacter via info@fondationbenianh.org ou <br>(+225) 07 04 43 65 03 ( appels ou whatsapp)</p>
+              @if(session('success'))
+              <div class="alert alert-success">
+                {{ session('success') }}
+              </div>
+              @endif
 
+              @if(session('error'))
+              <div class="alert alert-danger">
+                {{ session('error') }}
+              </div>
+              @endif
               <div class="form-group">
                 <label class="col-form-label">Email</label>
                 <input class="form-control" type="email" name="email" required value="{{ $email }}" readonly>

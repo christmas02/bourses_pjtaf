@@ -50,7 +50,7 @@
                 <div class="form-input position-relative">
                   <!-- Suppression de value="motdepasse" pour des raisons de sécurité et d'ergonomie -->
                   <input class="form-control" type="password" name="password" required placeholder="*********">
-                  <div class="show-hide"><span class="show">Voir</span></div>
+                  <div class="show-hide"><span class="show"></span></div>
                 </div>
               </div>
 

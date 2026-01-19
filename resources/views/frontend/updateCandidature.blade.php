@@ -10,7 +10,7 @@
                     <input type="hidden" name="candidature_id" value="{{ $candidature->candidature_id }}">
                     <input type="hidden" name="user_id" value="{{ $user->user_id }}">
                     <ul>
-                        <li> <a class="logo text-start ps-0" href="{{ route('connexion') }}"><img class="img-fluid for-dark" src="../assets/images/logo/logo.png" alt="logo"><img class="img-fluid for-light" src="../assets/images/logo/logo_dark.png" alt="logo"></a></li>
+                        <li> <a class="logo text-start ps-0" href="{{ route('logout') }}"><img class="img-fluid for-dark" src="../assets/images/logo/logo.png" alt="logo"><img class="img-fluid for-light" src="../assets/images/logo/logo_dark.png" alt="logo"></a></li>
 
                         <li class="step-item active" id="item-step-2">
                             <a href="#step-2">
@@ -137,7 +137,7 @@
                                         'diplome_master' => "Diplôme de Master",
                                         'diplome_bac' => "Diplôme du BAC",
                                         'releve_notes_bac' => "Relevé de notes BAC",
-                                        'projet_soutenu' => "Projet soutenu (Résumé/Fichier)"
+                                        'resume_projet' => "Projet soutenu (Résumé/Fichier)"
                                         ];
                                         @endphp
 

@@ -161,9 +161,11 @@ class AuthController extends Controller
     public function saveNewPassword(Request $request)
     {
         try {
+            // dd($request->all());
             $data = [
+                'user_id' => $request->user_id,
                 'email' => $request->email,
-                'password' => $this->Setting->hashPassword($request->password),
+                'password' => $request->password,
             ];
             $saved = $this->UserService->updateAccountUser($data);
             // rediger le user sur la vue de connexion
@@ -171,7 +173,7 @@ class AuthController extends Controller
                 # code...
                 return redirect()->route('connexion')->with('success', 'Votre mot de passe a bien été mis à jour. Veuillez vous connecter.');
             }
-            return redirect()->back()->with('error', 'Erreur lors de la modification du mot de pas.');
+            return redirect()->back()->with('error', 'Erreur lors de la modification du mot de passe.');
         } catch (\Throwable $th) {
             // En cas d'erreur, annuler toutes les modifications
 

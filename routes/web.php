@@ -32,7 +32,7 @@ Route::controller(AuthController::class)->group(function () {
 
     Route::get('/confirmation/{user_id}/{token}', 'confirm')->name('confirmCompte');
 
-    Route::get('deconnexion', 'logout');
+    Route::get('deconnexion', 'logout')->name('logout');
 });
 
 Route::prefix('candidature')
