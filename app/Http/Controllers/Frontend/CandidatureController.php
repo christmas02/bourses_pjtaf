@@ -73,6 +73,7 @@ class CandidatureController extends Controller
             ], 500);
         }
     }
+
     #PAGE DE NOTIFICATION UPDATE DE CANDIDATURE
     public function notifUpdateCandidature()
     {
@@ -270,13 +271,16 @@ class CandidatureController extends Controller
         try {
             // dd($request->all());
             $dateUser = [
-                'user_id' => $request->user_id,
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => $request->password ?: $request->input('old_password'), // conserver ancien mot de passe si vide
-                'role' => 'candidat',
+                'user_id'   => $request->user_id,
+                'name'      => $request->name,
+                'email'     => $request->email,
+                'role'      => 'candidat',
                 'is_active' => true,
             ];
+
+            if (isset($request->password)) {
+                $dateUser['password'] = $request->password;
+            }
 
             // Sauvegarde via le service
             $saved = $this->UserService->updateAccountUser($dateUser);
