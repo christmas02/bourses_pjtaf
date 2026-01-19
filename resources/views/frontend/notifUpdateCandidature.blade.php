@@ -8,7 +8,7 @@
     <meta name="description" content="Un programme de bourses dédié à la promotion et à la valorisation des compétences dans le digital, le numérique et les sciences fondamentales appliquées">
     <meta name="keywords" content="Programme de bourses, promotion des compétences, valorisation des talents, formation académique, soutien éducatif">
     <meta name="author" content="Yango">
-    <title>Notification - Yango Fellowship</title>
+    <title>PJTAF 2026 - Programme Jeunes Talents en Fiscalités</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">

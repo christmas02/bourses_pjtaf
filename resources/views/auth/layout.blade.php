@@ -5,10 +5,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Un programme de bourses dédié à la promotion et à la valorisation des compétences dans le digital, le numérique et les sciences fondamentales appliquées">
-  <meta name="keywords" content="Programme de bourses, promotion des compétences, valorisation des talents, formation académique, soutien éducatif">
+  <meta name="description" content="PJTAF - Programme Jeunes Talents en Fiscalités. Bourse d'excellence pour les étudiants en Master 2 Fiscalité et Droit des Affaires.">
+  <meta name="keywords" content="PJTAF - Programme Jeunes Talents en Fiscalités. Bourse d'excellence pour les étudiants en Master 2 Fiscalité et Droit des Affaires.">
   <meta name="author" content="Yango">
-  <title>Yango Fellowship - Programme bourse d'étude</title>
+  <title>PJTAF 2026 - Programme Jeunes Talents en Fiscalités</title>
   <!-- Google font-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
