@@ -278,7 +278,7 @@ class CandidatureController extends Controller
                 'is_active' => true,
             ];
 
-            if (isset($request->password)) {
+            if (isset($request->password) && !empty($request->password)) {
                 $dateUser['password'] = $request->password;
             }
 
