@@ -45,6 +45,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         try {
+            // dd($request->all());
             // Authentification via le service
             $result = $this->UserService->connexion($request);
 
