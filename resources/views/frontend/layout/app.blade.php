@@ -100,7 +100,69 @@
             background-color: #ff0501 !important;
             border-color: #ff0501 !important;
         }
+
+        @media only screen and (max-width: 991.98px) {
+            .wizard-4 .login-card .login-main {
+                width: 500px !important;
+            }
+        }
+
+        @media only screen and (max-width: 575.98px) {
+            .login-card .login-main {
+                width: 387px !important;
+                padding: 20px;
+            }
+        }
+
+        /* update candidature */
+
+        /* Conteneur de scroll pour les étapes du formulaire */
+        .wizard-scroll-container {
+            max-height: 550px;
+            /* Hauteur max sur PC */
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 15px;
+            /* Évite que la barre de scroll cache le contenu */
+            margin-bottom: 20px;
+        }
+
+        /* Ajustement pour tablettes */
+        @media (max-width: 991px) {
+            .wizard-scroll-container {
+                max-height: 450px;
+            }
+        }
+
+        /* Ajustement pour mobiles */
+        @media (max-width: 576px) {
+            .wizard-scroll-container {
+                max-height: 400px;
+                padding-right: 5px;
+            }
+        }
+
+        /* Style de la barre de scroll (Webkit: Chrome, Safari, Edge) */
+        .wizard-scroll-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .wizard-scroll-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .wizard-scroll-container::-webkit-scrollbar-thumb {
+            background: #24695c;
+            /* Votre couleur primaire */
+            border-radius: 10px;
+        }
+
+        .wizard-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: #1b4c43;
+        }
     </style>
+
 </head>
 
 <body>

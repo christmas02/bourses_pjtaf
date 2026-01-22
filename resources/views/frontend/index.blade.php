@@ -29,7 +29,6 @@
     <!-- App css (CORRIGÉ ICI) -->
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/css/responsive.css')}}">
-
     <style>
         .hero-dates {
             background: rgba(255, 208, 0, 0.2);
@@ -40,24 +39,26 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        .btn-apply {
-            padding: 15px 35px !important;
-            font-weight: 700 !important;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        @media only screen and (max-width: 575px) {
+            .landing-home {
+                height: 900px !important;
+            }
         }
 
-        .feature-section {
-
-            height: 400px !important;
-
+        @media only screen and (max-width: 480px) {
+            .landing-home .navbar-toggler {
+                padding: none;
+                padding-right: 29px !important;
+            }
         }
 
-        /* .landing-home {
-            background: linear-gradient(45deg, #24695c, #1b4c43);
-        } */
+        @media only screen and (max-width: 991px) {
+            .feature-section {
+                height: 625px !important;
+            }
+        }
     </style>
+
 </head>
 
 <body class="landing-page">
@@ -84,7 +85,7 @@
                                     <li class="nav-item"><a class="nav-link" href="#processus">Processus</a></li>
                                 </ul>
                             </div>
-                            <div class="buy-btn">
+                            <div class="">
                                 <a class="nav-link js-scroll px-4 py-2 bg-light text-dark rounded-pill fw-bold" href="{{ route('connexion') }}">Se Connecter</a>
                             </div>
                         </nav>
@@ -210,6 +211,42 @@
                             <p class="mb-0 text-center">S'engager sur la durée totale du programme (15 mois).</p>
                         </div>
                     </div>
+                    <!-- Section Documents à fournir -->
+                    <div class="row mt-5 justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="card border-0 shadow-sm p-4 p-md-5">
+                                <h3 class="font-primary mb-4 text-center text-md-start">Documents à fournir</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul class="list-unstyled doc-list">
+                                            <li class="mb-3 d-flex align-items-start"><i class="fa fa-file-text-o font-primary me-3 mt-1"></i> Certificat de nationalité</li>
+                                            <li class="mb-3 d-flex align-items-start"><i class="fa fa-file-text-o font-primary me-3 mt-1"></i> CV actualisé</li>
+                                            <li class="mb-3 d-flex align-items-start"><i class="fa fa-file-text-o font-primary me-3 mt-1"></i> Photo d’identité (récente)</li>
+                                            <li class="mb-3 d-flex align-items-start"><i class="fa fa-file-text-o font-primary me-3 mt-1"></i> Diplôme de Master 2 ou attestation de réussite</li>
+                                            <li class="mb-3 d-flex align-items-start"><i class="fa fa-file-text-o font-primary me-3 mt-1"></i> Diplômes obtenus et relevés de notes (depuis le BAC)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul class="list-unstyled doc-list">
+                                            <li class="mb-3 d-flex align-items-start"><i class="fa fa-file-text-o font-primary me-3 mt-1"></i> 02 lettres de recommandation (Professeurs principaux)</li>
+                                            <li class="mb-3 d-flex align-items-start"><i class="fa fa-file-text-o font-primary me-3 mt-1"></i> Lettre de motivation et d’engagement</li>
+                                            <li class="mb-3 d-flex align-items-start"><i class="fa fa-file-text-o font-primary me-3 mt-1"></i> Résumé du projet de soutenance (max 3 pages)</li>
+                                        </ul>
+
+                                        <!-- Encadré Paiement -->
+                                        <div class="p-3 mt-4 rounded-3 border-start border-primary border-4 bg-light shadow-sm">
+                                            <h6 class="fw-bold text-dark mb-2">Frais de candidature : 25 000 FCFA</h6>
+                                            <p class="mb-0 small text-muted">
+                                                <img src="https://financesao.com/wp-content/uploads/2025/06/WAVE-recrute-pour-ce-poste-12-Decembre-2024.png" alt="Wave" height="20" class="me-2">
+                                                Paiement via <strong>Wave</strong> au : <span class="badge bg-primary fs-6">07 04 43 65 03</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
         </section>
