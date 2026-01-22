@@ -34,7 +34,7 @@
                     </ul>
 
                     <!-- ÉTAPE 2 : INFORMATIONS PERSONNELLES -->
-                    <div id="step-2">
+                    <div id="step-2" style="overflow: auto;">
                         <div class="wizard-title d-flex align-items-center mb-4">
                             <!-- Avatar à gauche -->
                             <div class="avatar-wrapper me-3 text-center" data-bs-toggle="modal" data-bs-target="#editProfileModal" style="cursor:pointer;">
@@ -48,24 +48,28 @@
                                 <h5 class="text-muted mb-0">Détails de votre profil de candidat</h5>
                             </div>
                         </div>
-                        <div class="login-main">
-                            <div class="theme-form">
-                                <div class="form-group mb-3">
-                                    <label for="date_naissance">Date de Naissance <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="date_naissance" name="date_naissance" type="date" value="{{ $candidature->date_naissance }}" required>
+                        <!-- ZONE DE SCROLL -->
+                        <div class="wizard-scroll-container">
+                            <div class="login-main">
+                                <div class="theme-form">
+                                    <div class="form-group mb-3">
+                                        <label for="date_naissance">Date de Naissance <span class="text-danger">*</span></label>
+                                        <input class="form-control" id="date_naissance" name="date_naissance" type="date" value="{{ $candidature->date_naissance }}" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="telephone">Téléphone <span class="text-danger">*</span></label>
+                                        <input class="form-control" id="telephone" name="telephone" type="tel" value="{{ $candidature->telephone }}" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="ecole_master">École de Master <span class="text-danger">*</span></label>
+                                        <input class="form-control" id="ecole_master" name="ecole_master" type="text" value="{{ $candidature->ecole_master }}" required>
+                                    </div>
+                                    <!-- <button type="button" class="btn btn-primary btn-prev me-3">Précédent</button> -->
+                                    <button type="button" class="btn btn-primary btn-next">Suivant</button>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label for="telephone">Téléphone <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="telephone" name="telephone" type="tel" value="{{ $candidature->telephone }}" required>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="ecole_master">École de Master <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="ecole_master" name="ecole_master" type="text" value="{{ $candidature->ecole_master }}" required>
-                                </div>
-                                <!-- <button type="button" class="btn btn-primary btn-prev me-3">Précédent</button> -->
-                                <button type="button" class="btn btn-primary btn-next">Suivant</button>
                             </div>
                         </div>
+
                     </div>
 
                     <!-- ÉTAPE 3 : PIÈCES JOINTES (PARTIE 1) -->
@@ -74,51 +78,54 @@
                             <h2>Documents de Candidature</h2>
                             <h5 class="text-muted mb-4">Téléchargez vos documents (Format PDF/Image)</h5>
                         </div>
+                        <!-- ZONE DE SCROLL -->
+                        <div class="wizard-scroll-container">
+                            <div class="wizard-step-container">
+                                <div class="login-main">
+                                    <div class="theme-form">
+                                        <div class="row">
+                                            @php
+                                            $docsStep3 = [
+                                            'photo' => "Photo d'identité",
+                                            'curriculum_vitae' => "Curriculum Vitae (CV)",
+                                            'lettre_motivation' => "Lettre de Motivation",
+                                            'certificat_nationalite' => "Certificat de Nationalité",
+                                            'lettre_recommendation_un' => "Lettre de Recommandation 1",
+                                            'lettre_recommendation_deux' => "Lettre de Recommandation 2"
+                                            ];
+                                            @endphp
 
-                        <div class="wizard-step-container">
-                            <div class="login-main">
-                                <div class="theme-form">
-                                    <div class="row">
-                                        @php
-                                        $docsStep3 = [
-                                        'photo' => "Photo d'identité",
-                                        'curriculum_vitae' => "Curriculum Vitae (CV)",
-                                        'lettre_motivation' => "Lettre de Motivation",
-                                        'certificat_nationalite' => "Certificat de Nationalité",
-                                        'lettre_recommendation_un' => "Lettre de Recommandation 1",
-                                        'lettre_recommendation_deux' => "Lettre de Recommandation 2"
-                                        ];
-                                        @endphp
+                                            @foreach($docsStep3 as $field => $label)
+                                            <div class="col-md-6 mb-2">
+                                                <label class="form-label fw-bold">{{ $label }}</label>
 
-                                        @foreach($docsStep3 as $field => $label)
-                                        <div class="col-md-6 mb-2">
-                                            <label class="form-label fw-bold">{{ $label }}</label>
+                                                @if(isset($candidature) && $candidature->$field)
+                                                <!-- Affichage du lien vers le fichier actuel -->
+                                                <div class="mb-1 p-1 border rounded bg-light d-flex align-items-center justify-content-between">
+                                                    <a href="{{ env('IMAGES_PATH') }}/{{ $candidature->$field }}" target="_blank" class="text-primary small">
+                                                        <i class="fa fa-file-text-o me-1"></i> Voir le document actuel
+                                                    </a>
+                                                    <span class="badge bg-success">Enregistré</span>
+                                                </div>
+                                                <!-- Champ caché pour conserver l'ancien fichier -->
+                                                <input type="hidden" name="old_{{ $field }}" value="{{ $candidature->$field }}">
+                                                @endif
 
-                                            @if(isset($candidature) && $candidature->$field)
-                                            <!-- Affichage du lien vers le fichier actuel -->
-                                            <div class="mb-1 p-1 border rounded bg-light d-flex align-items-center justify-content-between">
-                                                <a href="{{ env('IMAGES_PATH') }}/{{ $candidature->$field }}" target="_blank" class="text-primary small">
-                                                    <i class="fa fa-file-text-o me-1"></i> Voir le document actuel
-                                                </a>
-                                                <span class="badge bg-success">Enregistré</span>
+                                                <input class="form-control" name="{{ $field }}" type="file" @if(!isset($candidature)) required @endif>
+                                                <small class="text-muted">Laissez vide pour conserver l'actuel (si modification)</small>
                                             </div>
-                                            <!-- Champ caché pour conserver l'ancien fichier -->
-                                            <input type="hidden" name="old_{{ $field }}" value="{{ $candidature->$field }}">
-                                            @endif
-
-                                            <input class="form-control" name="{{ $field }}" type="file" @if(!isset($candidature)) required @endif>
-                                            <small class="text-muted">Laissez vide pour conserver l'actuel (si modification)</small>
+                                            @endforeach
                                         </div>
-                                        @endforeach
-                                    </div>
 
-                                    <div class="mt-3">
-                                        <button type="button" class="btn btn-primary btn-prev me-3">Précédent</button>
-                                        <button type="button" class="btn btn-primary btn-next">Suivant</button>
+                                        <div class="mt-3">
+                                            <button type="button" class="btn btn-primary btn-prev me-3">Précédent</button>
+                                            <button type="button" class="btn btn-primary btn-next">Suivant</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                     <!-- ÉTAPE 4 : ACADÉMIQUE & PAIEMENT -->
@@ -127,69 +134,81 @@
                             <h2>Validation Finale</h2>
                             <h5 class="text-muted mb-4">Diplômes et preuve de paiement</h5>
                         </div>
+                        <!-- ZONE DE SCROLL -->
+                        <div class="wizard-scroll-container">
+                            <div class="wizard-step-container">
+                                <div class="login-main">
+                                    <div class="theme-form">
+                                        <div class="row">
+                                            @php
+                                            $docsStep4 = [
+                                            'diplome_master' => "Diplôme de Master",
+                                            'diplome_bac' => "Diplôme du BAC",
+                                            'releve_notes_bac' => "Relevé de notes BAC",
+                                            'resume_projet' => "Projet soutenu (Résumé/Fichier)"
+                                            ];
+                                            @endphp
 
-                        <div class="wizard-step-container">
-                            <div class="login-main">
-                                <div class="theme-form">
-                                    <div class="row">
-                                        @php
-                                        $docsStep4 = [
-                                        'diplome_master' => "Diplôme de Master",
-                                        'diplome_bac' => "Diplôme du BAC",
-                                        'releve_notes_bac' => "Relevé de notes BAC",
-                                        'resume_projet' => "Projet soutenu (Résumé/Fichier)"
-                                        ];
-                                        @endphp
+                                            @foreach($docsStep4 as $field => $label)
+                                            <div class="col-md-6 mb-2">
+                                                <label class="form-label fw-bold">{{ $label }}</label>
 
-                                        @foreach($docsStep4 as $field => $label)
-                                        <div class="col-md-6 mb-2">
-                                            <label class="form-label fw-bold">{{ $label }}</label>
+                                                @if(isset($candidature) && $candidature->$field)
 
-                                            @if(isset($candidature) && $candidature->$field)
+                                                <div class="mb-1 p-1 border rounded bg-light d-flex align-items-center justify-content-between">
+                                                    <a href="{{ env('IMAGES_PATH') }}/{{ $candidature->$field }}" target="_blank" class="text-primary small">
+                                                        <i class="fa fa-file-text-o me-1"></i> Voir le document actuel
+                                                    </a>
+                                                    <span class="badge bg-success">Enregistré</span>
+                                                </div>
+                                                <input type="hidden" name="old_{{ $field }}" value="{{ $candidature->$field }}">
 
-                                            <div class="mb-1 p-1 border rounded bg-light d-flex align-items-center justify-content-between">
-                                                <a href="{{ env('IMAGES_PATH') }}/{{ $candidature->$field }}" target="_blank" class="text-primary small">
-                                                    <i class="fa fa-file-text-o me-1"></i> Voir le document actuel
-                                                </a>
-                                                <span class="badge bg-success">Enregistré</span>
+                                                @endif
+
+                                                <input class="form-control" name="{{ $field }}" type="file" @if(!isset($candidature)) required @endif>
                                             </div>
-                                            <input type="hidden" name="old_{{ $field }}" value="{{ $candidature->$field }}">
+                                            @endforeach
 
-                                            @endif
+                                            <!-- CAS SPÉCIFIQUE : REÇU DE PAIEMENT -->
+                                            <div class="col-12 mb-1 mt-2">
+                                                <div class="card bg-light-primary border-dashed">
+                                                    <div class="card-body">
+                                                        <label class="form-label text-success fw-bold">Reçu de paiement des frais de dossier</label>
 
-                                            <input class="form-control" name="{{ $field }}" type="file" @if(!isset($candidature)) required @endif>
-                                        </div>
-                                        @endforeach
+                                                        @if(isset($candidature) && $candidature->recu_paiement)
+                                                        <div class="mb-1">
+                                                            <a href="{{ env('IMAGES_PATH') }}/{{ $candidature->recu_paiement }}" target="_blank" class="badge bg-success p-2 text-white text-decoration-none">
+                                                                <i class="fa fa-check-circle me-1"></i> Reçu déjà transmis (Voir)
+                                                            </a>
+                                                            <input type="hidden" name="old_recu_paiement" value="{{ $candidature->recu_paiement }}">
+                                                        </div>
+                                                        @endif
 
-                                        <!-- CAS SPÉCIFIQUE : REÇU DE PAIEMENT -->
-                                        <div class="col-12 mb-1 mt-2">
-                                            <div class="card bg-light-primary border-dashed">
-                                                <div class="card-body">
-                                                    <label class="form-label text-success fw-bold">Reçu de paiement des frais de dossier</label>
+                                                        <input class="form-control bg-white" name="recu_paiement" type="file" @if(!isset($candidature)) required @endif>
+                                                        <small class="text-muted d-block mt-1">Veuillez joindre le scan du reçu officiel.</small>
 
-                                                    @if(isset($candidature) && $candidature->recu_paiement)
-                                                    <div class="mb-1">
-                                                        <a href="{{ env('IMAGES_PATH') }}/{{ $candidature->recu_paiement }}" target="_blank" class="badge bg-success p-2 text-white text-decoration-none">
-                                                            <i class="fa fa-check-circle me-1"></i> Reçu déjà transmis (Voir)
-                                                        </a>
-                                                        <input type="hidden" name="old_recu_paiement" value="{{ $candidature->recu_paiement }}">
+                                                        <!-- Encadré Paiement -->
+                                                        <div class="p-3 mt-4 rounded-3 border-start border-primary border-4 bg-light shadow-sm">
+                                                            <h6 class="fw-bold text-dark mb-2">Frais de candidature : 25 000 FCFA</h6>
+                                                            <p class="mb-0 small text-muted">
+                                                                <img src="https://financesao.com/wp-content/uploads/2025/06/WAVE-recrute-pour-ce-poste-12-Decembre-2024.png" alt="Wave" height="20" class="me-2">
+                                                                Paiement via <strong>Wave</strong> au : <span class="badge bg-primary fs-6">07 04 43 65 03</span>
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                    @endif
-
-                                                    <input class="form-control bg-white" name="recu_paiement" type="file" @if(!isset($candidature)) required @endif>
-                                                    <small class="text-muted d-block mt-1">Veuillez joindre le scan du reçu officiel.</small>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="buttons-right mt-0">
-                                        <button type="button" class="btn btn-secondary btn-prev me-3">Précédent</button>
-                                        <button type="submit" class="btn btn-primary px-5">Soumettre la candidature</button>
+                                        <div class="buttons-right mt-0">
+                                            <button type="button" class="btn btn-secondary btn-prev me-3">Précédent</button>
+                                            <button type="submit" class="btn btn-primary px-5">Soumettre la candidature</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                 </form>

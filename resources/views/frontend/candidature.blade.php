@@ -163,7 +163,7 @@
                                             <label class="form-label">Projet soutenu (Résumé/Fichier)</label>
                                             <input class="form-control" name="resume_projet" type="file">
                                         </div>
-                                        
+
                                         <div class="col-12 mb-3">
                                             <div class="card bg-light-primary">
                                                 <div class="card-body">
@@ -171,6 +171,14 @@
                                                     <input class="form-control" name="recu_paiement" type="file">
                                                     <small class="text-muted">Veuillez joindre le scan du reçu officiel.</small>
                                                 </div>
+                                            </div>
+                                            <!-- Encadré Paiement -->
+                                            <div class="p-3 mt-4 rounded-3 border-start border-primary border-4 bg-light shadow-sm">
+                                                <h6 class="fw-bold text-dark mb-2">Frais de candidature : 25 000 FCFA</h6>
+                                                <p class="mb-0 small text-muted">
+                                                    <img src="https://financesao.com/wp-content/uploads/2025/06/WAVE-recrute-pour-ce-poste-12-Decembre-2024.png" alt="Wave" height="20" class="me-2">
+                                                    Paiement via <strong>Wave</strong> au : <span class="badge bg-primary fs-6">07 04 43 65 03</span>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
