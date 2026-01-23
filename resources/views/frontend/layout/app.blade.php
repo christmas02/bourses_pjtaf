@@ -101,48 +101,63 @@
             border-color: #ff0501 !important;
         }
 
-        @media only screen and (max-width: 991.98px) {
+        /* =========================
+   Responsive login card
+   ========================= */
+
+        /* Tablettes et écrans < LG */
+        @media (max-width: 991.98px) {
             .wizard-4 .login-card .login-main {
-                width: 500px !important;
+                width: 500px;
             }
         }
 
-        @media only screen and (max-width: 575.98px) {
+        /* Mobiles */
+        @media (max-width: 575.98px) {
             .login-card .login-main {
-                width: 387px !important;
+                width: 100%;
+                max-width: 387px;
                 padding: 20px;
             }
         }
 
-        /* update candidature */
 
-        /* Conteneur de scroll pour les étapes du formulaire */
+        /* =========================
+   Update candidature
+   Scroll des étapes
+   ========================= */
+
+        /* Conteneur de scroll (desktop) */
         .wizard-scroll-container {
             max-height: 550px;
-            /* Hauteur max sur PC */
             overflow-y: auto;
             overflow-x: hidden;
             padding-right: 15px;
-            /* Évite que la barre de scroll cache le contenu */
+            /* évite que la scrollbar masque le contenu */
             margin-bottom: 20px;
         }
 
-        /* Ajustement pour tablettes */
-        @media (max-width: 991px) {
+        /* Tablettes */
+        @media (max-width: 991.98px) {
             .wizard-scroll-container {
                 max-height: 450px;
             }
         }
 
-        /* Ajustement pour mobiles */
-        @media (max-width: 576px) {
+        /* Mobiles */
+        @media (max-width: 575.98px) {
             .wizard-scroll-container {
                 max-height: 400px;
                 padding-right: 5px;
             }
         }
 
-        /* Style de la barre de scroll (Webkit: Chrome, Safari, Edge) */
+
+        /* =========================
+   Scrollbar (Webkit only)
+   Chrome / Edge / Safari
+   ========================= */
+
         .wizard-scroll-container::-webkit-scrollbar {
             width: 6px;
         }
@@ -154,7 +169,7 @@
 
         .wizard-scroll-container::-webkit-scrollbar-thumb {
             background: #24695c;
-            /* Votre couleur primaire */
+            /* couleur primaire */
             border-radius: 10px;
         }
 
