@@ -97,7 +97,7 @@
                         <div class="content text-center">
                             <div>
                                 <div class="hero-dates text-black">
-                                    <i class="fa fa-calendar me-2"></i> Candidatures : 19 Janvier au 19 Février 2026
+                                    <i class="fa fa-calendar me-2"></i> Candidatures : 12 Mars au 31 Mars 2026
                                 </div>
                                 <h1 class="text-center text-black">
                                     Programme Jeunes Talents <br> en <span class="font-primary text-uppercase">Fiscalités</span> (PJTAF)

@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class CandidatureController extends Controller
 {
@@ -36,6 +37,11 @@ class CandidatureController extends Controller
     #FORMULAIRE DE CANDIDATURE
     public function index()
     {
+        // Clôture automatique si la date système est >= 31/03/2026
+        $dateCloture = Carbon::createFromFormat('d/m/Y', '31/03/2026')->startOfDay();
+        if (Carbon::now()->greaterThanOrEqualTo($dateCloture)) {
+            return view('frontend.cloture-des-candidatures');
+        }
         return view('frontend.candidature');
     }
 

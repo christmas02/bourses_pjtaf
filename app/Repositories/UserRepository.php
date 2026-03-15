@@ -13,6 +13,11 @@ use Illuminate\Support\Str;
 
 class UserRepository
 {
+    public function listUser()
+    {
+        return User::whereIn('role', ['jury', 'admin', 'partenaire'])->get();
+    }
+
     public function userLogin($data)
     {
         try {
