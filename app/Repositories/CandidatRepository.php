@@ -43,6 +43,7 @@ class CandidatRepository
         return Candidature::where('user_id', $user_id)->first();
     }
 
+
     public function updateCandidature($data)
     {
         try {
@@ -69,6 +70,16 @@ class CandidatRepository
         } catch (\Throwable $th) {
             Log::error("Erreur lors de la mise a jour du dossier de candidature : " . $th->getMessage(), []);
             throw $th; // Renvoyer l'exception si nécessaire
+        }
+    }
+
+    public function getAllCandidats()
+    {
+        try {
+            return Candidature::all();
+        } catch (\Throwable $th) {
+            Log::error("Erreur lors de la récupération de tous les candidats : " . $th->getMessage(), []);
+            throw $th;
         }
     }
 }

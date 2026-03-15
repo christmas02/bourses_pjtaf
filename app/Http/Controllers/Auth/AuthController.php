@@ -56,8 +56,8 @@ class AuthController extends Controller
                 // Gestion par rôle
                 if ($authUser->role === 'candidat') {
 
-                    // Clôture automatique si la date système est >= 19/02/2026
-                    $dateCloture = Carbon::createFromFormat('d/m/Y', '19/02/2026')->startOfDay();
+                    // Clôture automatique si la date système est >= 31/03/2026
+                    $dateCloture = Carbon::createFromFormat('d/m/Y', '31/03/2026')->startOfDay();
                     if (Carbon::now()->greaterThanOrEqualTo($dateCloture)) {
                         return view('frontend.cloture-des-candidatures');
                     }
@@ -68,17 +68,20 @@ class AuthController extends Controller
                 }
 
                 if ($authUser->role === 'partenaire') {
-                    return redirect('/partenaire-dashboard')
+                    return redirect()
+                        ->route('admin.dashboard')
                         ->with('success', 'Bienvenue sur le tableau de bord partenaire.');
                 }
 
                 if ($authUser->role === 'jury') {
-                    return redirect('/jury-dashboard')
+                    return redirect()
+                    ->route('admin.dashboard')
                         ->with('success', 'Bienvenue sur le tableau de bord jury.');
                 }
 
-                if ($authUser->role === 'administrateur') {
-                    return redirect('/admin-dashboard')
+                if ($authUser->role === 'admin') {
+                    return redirect()
+                        ->route('admin.dashboard')
                         ->with('success', 'Bienvenue sur le tableau de bord administrateur.');
                 }
 

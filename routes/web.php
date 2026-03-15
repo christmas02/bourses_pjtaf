@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Frontend\CandidatureController;
@@ -54,5 +55,23 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/update_candidature', 'updateCandidature')->name('updateCandidature');
 
         Route::post('updateIndoUser', 'updateIndoUser')->name('updateIndoUser');
+    });
+
+    #TABLEAU DE BORD ADMIN
+    Route::prefix('admin')
+    ->controller(AdminController::class)
+    ->group(function () {
+
+        Route::get('/dashboard', 'index')->name('admin.dashboard');
+
+    #dossier de candidature
+    Route::get('/dossier-candidature/{user_id}', 'dossierCandidature')->name('dossier.candidature');
+
+    #liste des collaborateurs
+    Route::get('/liste-collaborateurs', 'listeCollaborateurs')->name('liste.collaborateurs');
+
+    #création d'un collaborateur
+    Route::post('/createCollaborateur', 'createCollaborateur')->name('createCollaborateur');
+        
     });
 });
