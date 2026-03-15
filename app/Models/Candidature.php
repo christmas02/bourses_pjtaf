@@ -12,4 +12,9 @@ class Candidature extends Model
     protected $primaryKey = 'candidature_id';
     public $incrementing = false;
     protected $keyType = 'string';
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
