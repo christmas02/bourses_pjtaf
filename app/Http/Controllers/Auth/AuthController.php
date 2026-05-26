@@ -57,10 +57,10 @@ class AuthController extends Controller
                 if ($authUser->role === 'candidat') {
 
                     // Clôture automatique si la date système est >= 31/03/2026
-                    $dateCloture = Carbon::createFromFormat('d/m/Y', '31/03/2026')->startOfDay();
-                    if (Carbon::now()->greaterThanOrEqualTo($dateCloture)) {
-                        return view('frontend.cloture-des-candidatures');
-                    }
+                    // $dateCloture = Carbon::createFromFormat('d/m/Y', '31/03/2026')->startOfDay();
+                    // if (Carbon::now()->greaterThanOrEqualTo($dateCloture)) {
+                    //     return view('frontend.cloture-des-candidatures');
+                    // }
 
                     return redirect()
                         ->route('FormUpdateCandidature')
